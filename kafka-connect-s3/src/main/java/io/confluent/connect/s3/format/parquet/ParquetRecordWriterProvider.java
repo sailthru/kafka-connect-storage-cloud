@@ -96,7 +96,9 @@ public class ParquetRecordWriterProvider implements RecordWriterProvider<S3SinkC
       @Override
       public void close() {
         try {
-          parquetWriter.close();
+            if(parquetWriter != null){
+                parquetWriter.close();
+            }
         } catch (IOException e) {
           throw new ConnectException(e);
         }
